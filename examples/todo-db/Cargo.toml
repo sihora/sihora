@@ -6,6 +6,3 @@ publish = false
 
 [dependencies]
 sihora = { path = "../../crates/sihora" }
-sihora-data = { path = "../../crates/sihora-data" }
-sihora-theme = { path = "../../crates/sihora-theme" }
-sihora-widgets = { path = "../../crates/sihora-widgets" }

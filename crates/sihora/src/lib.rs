@@ -1,24 +1,67 @@
 //! Sihora — declarative cross-platform UI framework in pure Rust.
 //!
-//! Facade crate that re-exports the public API from internal crates.
+//! # Features
+//!
+//! - **`full`** *(default)* — enables everything below.
+//! - **`render`** — wgpu GPU renderer.
+//! - **`text`** — text shaping and rasterization (cosmic-text).
+//! - **`widgets`** — styled components (buttons, text fields, checkboxes, …).
+//! - **`primitives`** — headless layout views (VStack, HStack, ZStack, …).
+//! - **`platform`** — platform shells (desktop, web, mobile).
+//! - **`data`** — reactive data layer with SQLite persistence.
+//! - **`android`** — Android native activity support.
 
-pub use sihora_core::a11y;
-pub use sihora_core::animation;
-pub use sihora_core::focus;
-pub use sihora_core::reactive;
-pub use sihora_core::text_input;
-pub use sihora_core::{
+pub mod core;
+pub mod layout;
+
+#[cfg(feature = "primitives")]
+pub mod primitives;
+
+#[cfg(feature = "render")]
+pub mod render;
+
+#[cfg(feature = "text")]
+pub mod text;
+
+pub mod theme;
+
+#[cfg(feature = "widgets")]
+pub mod widgets;
+
+#[cfg(feature = "platform")]
+pub mod platform;
+
+#[cfg(feature = "data")]
+pub mod data;
+
+// ── Core re-exports (always available) ──────────────────────────────────
+
+pub use core::a11y;
+pub use core::animation;
+pub use core::focus;
+pub use core::reactive;
+pub use core::text_input;
+pub use core::{
     Color, Event, Framed, Key, LayoutRect, Modifiers, NodeId, Padded, View, ViewExt, ViewTree,
 };
-pub use sihora_data as data;
-pub use sihora_layout::{Alignment, Constraints, EdgeInsets, HAlign, Point, Size, VAlign};
-pub use sihora_platform::{run, run_app, run_reactive, run_with_text, AppFrame, TextContext};
-pub use sihora_primitives::{hit_test, HStack, SizedBox, VStack, ZStack};
-pub use sihora_render::{DrawCommand, TextDraw};
-#[cfg(not(target_arch = "wasm32"))]
-pub use sihora_text::TextBuffer;
-pub use sihora_theme::{self as theme, ColorScheme, Theme};
-pub use sihora_widgets as widgets;
 
-#[cfg(target_os = "android")]
-pub use sihora_platform::{set_android_app, AndroidApp};
+pub use layout::{Alignment, Constraints, EdgeInsets, HAlign, Point, Size, VAlign};
+
+pub use theme::{ColorScheme, Theme};
+
+// ── Feature-gated re-exports ────────────────────────────────────────────
+
+#[cfg(feature = "primitives")]
+pub use primitives::{hit_test, HStack, SizedBox, VStack, ZStack};
+
+#[cfg(feature = "render")]
+pub use render::{DrawCommand, TextDraw};
+
+#[cfg(all(feature = "text", not(target_arch = "wasm32")))]
+pub use text::TextBuffer;
+
+#[cfg(feature = "platform")]
+pub use platform::{run, run_app, run_reactive, run_with_text, AppFrame, TextContext};
+
+#[cfg(all(feature = "platform", target_os = "android"))]
+pub use platform::{set_android_app, AndroidApp};

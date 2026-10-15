@@ -2,8 +2,8 @@ use sihora::a11y::A11yTree;
 use sihora::reactive::{create_signal, get, set};
 use sihora::{hit_test, run_app, AppFrame, Color, DrawCommand, Event, Key, TextDraw};
 
-use sihora_theme::{ColorScheme, Theme};
-use sihora_widgets::{
+use sihora::theme::{ColorScheme, Theme};
+use sihora::widgets::{
     button, card, checkbox, dialog, divider, icon, list_row, text, text_field, toggle,
 };
 

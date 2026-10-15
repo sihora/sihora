@@ -46,9 +46,9 @@ pub fn derive_model(input: TokenStream) -> TokenStream {
         let col_ty = type_to_column_type(&field.ty);
 
         col_defs.push(quote! {
-            sihora_data::ColumnDef {
+            sihora::data::ColumnDef {
                 name: stringify!(#fname),
-                ty: sihora_data::#col_ty,
+                ty: sihora::data::#col_ty,
                 primary_key: #is_id,
             }
         });
@@ -65,13 +65,13 @@ pub fn derive_model(input: TokenStream) -> TokenStream {
     let num_cols = col_defs.len();
 
     let expanded = quote! {
-        impl sihora_data::Model for #name {
+        impl sihora::data::Model for #name {
             fn table_name() -> &'static str {
                 #table_name
             }
 
-            fn columns() -> &'static [sihora_data::ColumnDef] {
-                static COLS: [sihora_data::ColumnDef; #num_cols] = [#(#col_defs),*];
+            fn columns() -> &'static [sihora::data::ColumnDef] {
+                static COLS: [sihora::data::ColumnDef; #num_cols] = [#(#col_defs),*];
                 &COLS
             }
 
@@ -83,11 +83,11 @@ pub fn derive_model(input: TokenStream) -> TokenStream {
                 self.id = id;
             }
 
-            fn to_params(&self) -> Vec<sihora_data::Value> {
+            fn to_params(&self) -> Vec<sihora::data::Value> {
                 vec![#(#to_params),*]
             }
 
-            fn from_values(values: &[sihora_data::Value]) -> Self {
+            fn from_values(values: &[sihora::data::Value]) -> Self {
                 Self {
                     #(#from_fields),*
                 }
@@ -115,10 +115,10 @@ fn type_to_column_type(ty: &Type) -> proc_macro2::TokenStream {
 fn value_expr(fname: &syn::Ident, ty: &Type) -> proc_macro2::TokenStream {
     let ty_str = quote!(#ty).to_string().replace(' ', "");
     match ty_str.as_str() {
-        "i64" => quote!(sihora_data::Value::Integer(self.#fname)),
-        "f64" => quote!(sihora_data::Value::Real(self.#fname)),
-        "String" => quote!(sihora_data::Value::Text(self.#fname.clone())),
-        "bool" => quote!(sihora_data::Value::Bool(self.#fname)),
+        "i64" => quote!(sihora::data::Value::Integer(self.#fname)),
+        "f64" => quote!(sihora::data::Value::Real(self.#fname)),
+        "String" => quote!(sihora::data::Value::Text(self.#fname.clone())),
+        "bool" => quote!(sihora::data::Value::Bool(self.#fname)),
         _ => quote!(compile_error!("unsupported type")),
     }
 }
@@ -127,16 +127,16 @@ fn from_value_expr(fname: &syn::Ident, ty: &Type, idx: usize) -> proc_macro2::To
     let ty_str = quote!(#ty).to_string().replace(' ', "");
     let extract = match ty_str.as_str() {
         "i64" => quote! {
-            match &values[#idx] { sihora_data::Value::Integer(v) => *v, _ => 0 }
+            match &values[#idx] { sihora::data::Value::Integer(v) => *v, _ => 0 }
         },
         "f64" => quote! {
-            match &values[#idx] { sihora_data::Value::Real(v) => *v, _ => 0.0 }
+            match &values[#idx] { sihora::data::Value::Real(v) => *v, _ => 0.0 }
         },
         "String" => quote! {
-            match &values[#idx] { sihora_data::Value::Text(v) => v.clone(), _ => String::new() }
+            match &values[#idx] { sihora::data::Value::Text(v) => v.clone(), _ => String::new() }
         },
         "bool" => quote! {
-            match &values[#idx] { sihora_data::Value::Bool(v) => *v, _ => false }
+            match &values[#idx] { sihora::data::Value::Bool(v) => *v, _ => false }
         },
         _ => quote!(compile_error!("unsupported type")),
     };

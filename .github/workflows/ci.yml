@@ -40,4 +40,4 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
-      - run: cargo check -p sihora-core --target wasm32-unknown-unknown
+      - run: cargo check -p sihora --target wasm32-unknown-unknown --no-default-features --features "render,text,widgets,primitives,data"

@@ -13,13 +13,14 @@ Cross-platform declarative UI framework in pure Rust. SwiftUI/Compose-style API,
 M11 — v0.1 public release. (Update this line when moving on.)
 
 ## Workspace
-- Monorepo, Cargo workspace, crates under `crates/`, examples under `examples/`.
-- Facade crate `sihora` re-exports everything; examples depend only on `sihora`.
-- Shared deps in `[workspace.dependencies]`.
+- Monorepo, Cargo workspace, two published crates: `sihora` + `sihora-data-derive`.
+- `sihora` is the single user-facing crate with feature flags (`full`, `render`, `text`, `widgets`, `primitives`, `platform`, `data`).
+- `sihora-data-derive` is the proc macro crate for `#[derive(Model)]`.
+- Examples under `examples/`, depend only on `sihora`.
 
 ## Hard rules
-- Respect crate boundaries (see ARCHITECTURE §2). Only `sihora-platform` touches winit/web-sys/OS APIs.
-- `sihora-core` must compile on `wasm32-unknown-unknown`: no threads, no blocking I/O, no `std::fs`.
+- Only the `platform` module touches winit/web-sys/OS APIs.
+- `sihora` core+layout modules must compile on `wasm32-unknown-unknown`: no threads, no blocking I/O, no `std::fs`.
 - Widgets use semantic theme tokens only. No raw colors/sizes.
 - No `Rc<RefCell<T>>` for user-facing state; use signal/handle IDs.
 - No `unwrap()`/`expect()` in library code except proven invariants (comment why).
@@ -32,7 +33,7 @@ M11 — v0.1 public release. (Update this line when moving on.)
 cargo fmt --all
 cargo clippy --workspace --all-targets -- -D warnings
 cargo test --workspace
-cargo check -p sihora-core --target wasm32-unknown-unknown
+cargo check -p sihora --target wasm32-unknown-unknown --no-default-features --features "render,text,widgets,primitives,data"
 cargo run -p <example>
 ```
 

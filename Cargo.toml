@@ -2,16 +2,7 @@
 resolver = "2"
 members = [
     "crates/sihora",
-    "crates/sihora-core",
-    "crates/sihora-layout",
-    "crates/sihora-primitives",
-    "crates/sihora-render",
-    "crates/sihora-text",
-    "crates/sihora-theme",
-    "crates/sihora-widgets",
-    "crates/sihora-data",
     "crates/sihora-data-derive",
-    "crates/sihora-platform",
     "examples/shapes",
     "examples/text",
     "examples/counter",
@@ -28,16 +19,7 @@ repository = "https://github.com/sihora/sihora"
 rust-version = "1.97"
 
 [workspace.dependencies]
-sihora-core = { path = "crates/sihora-core", version = "0.1.0" }
-sihora-layout = { path = "crates/sihora-layout", version = "0.1.0" }
-sihora-primitives = { path = "crates/sihora-primitives", version = "0.1.0" }
-sihora-render = { path = "crates/sihora-render", version = "0.1.0" }
-sihora-text = { path = "crates/sihora-text", version = "0.1.0" }
-sihora-data = { path = "crates/sihora-data", version = "0.1.0" }
 sihora-data-derive = { path = "crates/sihora-data-derive", version = "0.1.0" }
-sihora-theme = { path = "crates/sihora-theme", version = "0.1.0" }
-sihora-widgets = { path = "crates/sihora-widgets", version = "0.1.0" }
-sihora-platform = { path = "crates/sihora-platform", version = "0.1.0" }
 cosmic-text = "0.12"
 slotmap = "1"
 wgpu = "24"

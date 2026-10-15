@@ -94,19 +94,20 @@ cargo run -p todo-db
 ## Architecture
 
 ```
-sihora             facade crate (re-exports everything)
-sihora-widgets     styled components (buttons, text fields, checkboxes, ...)
-sihora-theme        design tokens, light/dark themes, contrast validation
-sihora-primitives   headless views (VStack, HStack, ZStack, SizedBox)
-sihora-data         Model store, Handle<T>, reactive queries, persistence
-sihora-core         View trait, reactive runtime, events, animation, a11y, focus
-sihora-layout       constraint-based layout engine
-sihora-text         text shaping/rasterization (cosmic-text)
-sihora-render       display list → wgpu GPU renderer
-sihora-platform     platform shells (desktop, web, mobile)
+sihora                single crate with feature flags
+├── core              View trait, reactive runtime, events, animation, a11y, focus
+├── layout            constraint-based layout engine
+├── primitives        headless views (VStack, HStack, ZStack, SizedBox)
+├── render            display list → wgpu GPU renderer
+├── text              text shaping/rasterization (cosmic-text)
+├── theme             design tokens, light/dark themes, contrast validation
+├── widgets           styled components (buttons, text fields, checkboxes, ...)
+├── platform          platform shells (desktop, web, mobile)
+└── data              Model store, Handle<T>, reactive queries, persistence
+sihora-data-derive    #[derive(Model)] proc macro
 ```
 
-Users depend only on the `sihora` facade crate.
+One dependency: `cargo add sihora`. Features: `full` (default), `render`, `text`, `widgets`, `primitives`, `platform`, `data`.
 
 ## Building
 
