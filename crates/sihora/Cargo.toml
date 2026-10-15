@@ -15,7 +15,7 @@ text = ["dep:cosmic-text"]
 widgets = ["render", "text"]
 primitives = []
 platform = ["render", "text", "dep:winit", "dep:pollster", "dep:accesskit", "dep:accesskit_winit", "dep:wasm-bindgen", "dep:wasm-bindgen-futures", "dep:web-sys", "dep:console_error_panic_hook"]
-data = ["dep:sihora-data-derive", "dep:rusqlite"]
+data = ["dep:sihora-derive", "dep:rusqlite"]
 android = ["platform", "winit/android-native-activity"]
 
 [dependencies]
@@ -32,7 +32,7 @@ cosmic-text = { workspace = true, optional = true }
 winit = { workspace = true, optional = true }
 
 # data
-sihora-data-derive = { workspace = true, optional = true }
+sihora-derive = { workspace = true, optional = true }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 pollster = { workspace = true, optional = true }

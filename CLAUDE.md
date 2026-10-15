@@ -13,9 +13,9 @@ Cross-platform declarative UI framework in pure Rust. SwiftUI/Compose-style API,
 M11 — v0.1 public release. (Update this line when moving on.)
 
 ## Workspace
-- Monorepo, Cargo workspace, two published crates: `sihora` + `sihora-data-derive`.
+- Monorepo, Cargo workspace, two published crates: `sihora` + `sihora-derive`.
 - `sihora` is the single user-facing crate with feature flags (`full`, `render`, `text`, `widgets`, `primitives`, `platform`, `data`).
-- `sihora-data-derive` is the proc macro crate for `#[derive(Model)]`.
+- `sihora-derive` is the proc macro crate for `#[derive(Model)]`.
 - Examples under `examples/`, depend only on `sihora`.
 
 ## Hard rules

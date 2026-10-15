@@ -104,7 +104,7 @@ sihora                single crate with feature flags
 ├── widgets           styled components (buttons, text fields, checkboxes, ...)
 ├── platform          platform shells (desktop, web, mobile)
 └── data              Model store, Handle<T>, reactive queries, persistence
-sihora-data-derive    #[derive(Model)] proc macro
+sihora-derive         #[derive(Model)] proc macro
 ```
 
 One dependency: `cargo add sihora`. Features: `full` (default), `render`, `text`, `widgets`, `primitives`, `platform`, `data`.

@@ -23,7 +23,7 @@
 
 use std::marker::PhantomData;
 
-pub use sihora_data_derive::Model;
+pub use sihora_derive::Model;
 
 // ── Value types ──────────────────────────────────────────────────────────
 

@@ -2,7 +2,7 @@
 resolver = "2"
 members = [
     "crates/sihora",
-    "crates/sihora-data-derive",
+    "crates/sihora-derive",
     "examples/shapes",
     "examples/text",
     "examples/counter",
@@ -19,7 +19,7 @@ repository = "https://github.com/sihora/sihora"
 rust-version = "1.97"
 
 [workspace.dependencies]
-sihora-data-derive = { path = "crates/sihora-data-derive", version = "0.1.0" }
+sihora-derive = { path = "crates/sihora-derive", version = "0.1.0" }
 cosmic-text = "0.12"
 slotmap = "1"
 wgpu = "24"
