@@ -5,4 +5,4 @@ edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
 repository.workspace = true
-description = "Constraint-based layout engine for Lumen"
+description = "Constraint-based layout engine for Sihora"

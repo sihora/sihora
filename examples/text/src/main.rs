@@ -5,7 +5,7 @@ fn main() {
     let mut last_width: f32 = 0.0;
 
     let text = "The quick brown fox jumps over the lazy dog. \
-                Lumen renders text with a glyph atlas and instanced quads.\n\n\
+                Sihora renders text with a glyph atlas and instanced quads.\n\n\
                 CJK: \u{4F60}\u{597D}\u{4E16}\u{754C} \u{3053}\u{3093}\u{306B}\u{3061}\u{306F} \
                 \u{C548}\u{B155}\u{D558}\u{C138}\u{C694}\n\n\
                 Emoji: \u{1F680}\u{1F30D}\u{2728}\u{1F525}\u{1F389}";

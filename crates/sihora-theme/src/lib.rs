@@ -1,4 +1,4 @@
-//! Design tokens and theming for Lumen.
+//! Design tokens and theming for Sihora.
 //!
 //! Provides semantic color tokens, typography scale, spacing, radius,
 //! and motion presets. Light and dark themes are built in.

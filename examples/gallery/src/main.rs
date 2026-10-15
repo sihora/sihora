@@ -64,7 +64,7 @@ fn main() {
 
         // --- Header ---
         cmds.push(text_ctx.draw_label(
-            "Lumen Gallery",
+            "Sihora Gallery",
             theme.typography.headline,
             left,
             y_cursor,
@@ -457,7 +457,7 @@ fn main() {
 
         AppFrame {
             commands: cmds,
-            a11y: A11yTree::empty("Lumen Gallery"),
+            a11y: A11yTree::empty("Sihora Gallery"),
         }
     });
 }

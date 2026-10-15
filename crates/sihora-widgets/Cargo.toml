@@ -5,7 +5,7 @@ edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
 repository.workspace = true
-description = "Styled widget draw functions for Lumen"
+description = "Styled widget draw functions for Sihora"
 
 [dependencies]
 sihora-core.workspace = true

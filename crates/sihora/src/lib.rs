@@ -1,4 +1,4 @@
-//! Lumen — declarative cross-platform UI framework in pure Rust.
+//! Sihora — declarative cross-platform UI framework in pure Rust.
 //!
 //! Facade crate that re-exports the public API from internal crates.
 

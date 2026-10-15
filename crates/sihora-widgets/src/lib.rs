@@ -1,4 +1,4 @@
-//! Styled widget draw functions for Lumen.
+//! Styled widget draw functions for Sihora.
 //!
 //! Each function consumes a [`Theme`] reference and produces
 //! [`Vec<DrawCommand>`] using semantic tokens only — no raw colors.

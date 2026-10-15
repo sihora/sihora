@@ -1,4 +1,4 @@
-//! Text shaping, layout, and rasterization for Lumen.
+//! Text shaping, layout, and rasterization for Sihora.
 
 use cosmic_text::{Attrs, Buffer, Family, FontSystem, Metrics, Shaping, SwashCache, SwashContent};
 use std::collections::hash_map::DefaultHasher;

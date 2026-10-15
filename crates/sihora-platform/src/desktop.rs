@@ -141,7 +141,7 @@ impl ApplicationHandler for DesktopApp {
         if self.window.is_some() {
             return;
         }
-        let (window, gpu) = init_gpu(event_loop, "Lumen");
+        let (window, gpu) = init_gpu(event_loop, "Sihora");
         self.gpu = Some(gpu);
         self.window = Some(window.clone());
         window.request_redraw();
@@ -220,7 +220,7 @@ impl ApplicationHandler for DesktopTextApp {
         if self.window.is_some() {
             return;
         }
-        let (window, gpu) = init_gpu(event_loop, "Lumen");
+        let (window, gpu) = init_gpu(event_loop, "Sihora");
         self.gpu = Some(gpu);
         self.window = Some(window.clone());
         window.request_redraw();
@@ -303,7 +303,7 @@ impl ApplicationHandler for ReactiveDesktopApp {
         if self.window.is_some() {
             return;
         }
-        let (window, gpu) = init_gpu(event_loop, "Lumen");
+        let (window, gpu) = init_gpu(event_loop, "Sihora");
         self.gpu = Some(gpu);
         self.window = Some(window.clone());
         window.request_redraw();
@@ -369,23 +369,23 @@ impl ApplicationHandler for ReactiveDesktopApp {
 
 type AppDrawFn = Box<dyn FnMut(f32, f32, &mut TextContext, &[Event]) -> AppFrame>;
 
-struct LumenActivationHandler;
+struct SihoraActivationHandler;
 
-impl accesskit::ActivationHandler for LumenActivationHandler {
+impl accesskit::ActivationHandler for SihoraActivationHandler {
     fn request_initial_tree(&mut self) -> Option<accesskit::TreeUpdate> {
-        Some(a11y_tree_to_update(&A11yTree::empty("Lumen")))
+        Some(a11y_tree_to_update(&A11yTree::empty("Sihora")))
     }
 }
 
-struct LumenActionHandler;
+struct SihoraActionHandler;
 
-impl accesskit::ActionHandler for LumenActionHandler {
+impl accesskit::ActionHandler for SihoraActionHandler {
     fn do_action(&mut self, _request: accesskit::ActionRequest) {}
 }
 
-struct LumenDeactivationHandler;
+struct SihoraDeactivationHandler;
 
-impl accesskit::DeactivationHandler for LumenDeactivationHandler {
+impl accesskit::DeactivationHandler for SihoraDeactivationHandler {
     fn deactivate_accessibility(&mut self) {}
 }
 
@@ -422,14 +422,14 @@ impl ApplicationHandler for AccessibleDesktopApp {
         if self.window.is_some() {
             return;
         }
-        let (window, gpu) = init_gpu(event_loop, "Lumen");
+        let (window, gpu) = init_gpu(event_loop, "Sihora");
         self.gpu = Some(gpu);
 
         let adapter = accesskit_winit::Adapter::with_direct_handlers(
             &window,
-            LumenActivationHandler,
-            LumenActionHandler,
-            LumenDeactivationHandler,
+            SihoraActivationHandler,
+            SihoraActionHandler,
+            SihoraDeactivationHandler,
         );
         self.adapter = Some(adapter);
 
@@ -590,7 +590,7 @@ fn update_fps(window: &Window, frame_count: &mut u32, fps_instant: &mut Instant)
     let elapsed = fps_instant.elapsed();
     if elapsed.as_secs_f64() >= 1.0 {
         let fps = *frame_count as f64 / elapsed.as_secs_f64();
-        window.set_title(&format!("Lumen — {fps:.0} FPS"));
+        window.set_title(&format!("Sihora — {fps:.0} FPS"));
         *frame_count = 0;
         *fps_instant = Instant::now();
     }

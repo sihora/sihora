@@ -1,4 +1,4 @@
-# Design System Spec — Lumen DS (working name)
+# Design System Spec — Sihora DS (working name)
 
 Status: Draft. Fill `TBD` before M7.
 

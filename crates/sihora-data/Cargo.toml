@@ -5,7 +5,7 @@ edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
 repository.workspace = true
-description = "Reactive data layer with persistence for Lumen"
+description = "Reactive data layer with persistence for Sihora"
 
 [dependencies]
 sihora-core.workspace = true

@@ -1,4 +1,4 @@
-//! Constraint-based layout types for Lumen.
+//! Constraint-based layout types for Sihora.
 
 /// 2-D size in logical pixels.
 #[derive(Debug, Clone, Copy, PartialEq, Default)]

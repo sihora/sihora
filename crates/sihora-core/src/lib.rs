@@ -1,4 +1,4 @@
-//! Core types for Lumen.
+//! Core types for Sihora.
 
 pub mod a11y;
 pub mod animation;

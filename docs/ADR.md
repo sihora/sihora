@@ -1,4 +1,4 @@
-# Architecture Decision Records — Lumen
+# Architecture Decision Records — Sihora
 
 Format: Context · Decision · Consequences. Status: Accepted unless noted.
 New decisions: append, never rewrite. Superseded → mark and link.

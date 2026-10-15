@@ -264,7 +264,7 @@ impl ApplicationHandler for MobileApp {
 // ---------------------------------------------------------------------------
 
 fn init_gpu(event_loop: &ActiveEventLoop) -> (Arc<Window>, GpuState) {
-    let attrs = WindowAttributes::default().with_title("Lumen");
+    let attrs = WindowAttributes::default().with_title("Sihora");
 
     let window = Arc::new(
         event_loop
@@ -351,7 +351,7 @@ fn render_frame(gpu: &mut GpuState, commands: &[DrawCommand], viewport: [f32; 2]
 pub fn run(mut draw_fn: impl FnMut(f32, f32) -> Vec<DrawCommand> + 'static) {
     run_app(move |w, h, _text_ctx, _events| AppFrame {
         commands: draw_fn(w, h),
-        a11y: A11yTree::empty("Lumen"),
+        a11y: A11yTree::empty("Sihora"),
     });
 }
 
@@ -361,7 +361,7 @@ pub fn run_with_text(
 ) {
     run_app(move |w, h, text_ctx, _events| AppFrame {
         commands: draw_fn(w, h, text_ctx),
-        a11y: A11yTree::empty("Lumen"),
+        a11y: A11yTree::empty("Sihora"),
     });
 }
 
@@ -371,7 +371,7 @@ pub fn run_reactive(
 ) {
     run_app(move |w, h, text_ctx, events| AppFrame {
         commands: draw_fn(w, h, text_ctx, events),
-        a11y: A11yTree::empty("Lumen"),
+        a11y: A11yTree::empty("Sihora"),
     });
 }
 

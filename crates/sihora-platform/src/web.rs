@@ -293,7 +293,7 @@ impl ApplicationHandler for WebApp {
             return;
         }
 
-        let attrs = WindowAttributes::default().with_title("Lumen");
+        let attrs = WindowAttributes::default().with_title("Sihora");
         let window = Arc::new(
             event_loop
                 .create_window(attrs)
@@ -430,7 +430,7 @@ pub fn run(draw_fn: impl FnMut(f32, f32) -> Vec<DrawCommand> + 'static) {
     let mut f = draw_fn;
     run_app(move |w, h, _text_ctx, _events| AppFrame {
         commands: f(w, h),
-        a11y: A11yTree::empty("Lumen"),
+        a11y: A11yTree::empty("Sihora"),
     });
 }
 
@@ -441,7 +441,7 @@ pub fn run_with_text(
     let mut f = draw_fn;
     run_app(move |w, h, text_ctx, _events| AppFrame {
         commands: f(w, h, text_ctx),
-        a11y: A11yTree::empty("Lumen"),
+        a11y: A11yTree::empty("Sihora"),
     });
 }
 
@@ -452,6 +452,6 @@ pub fn run_reactive(
     let mut f = draw_fn;
     run_app(move |w, h, text_ctx, events| AppFrame {
         commands: f(w, h, text_ctx, events),
-        a11y: A11yTree::empty("Lumen"),
+        a11y: A11yTree::empty("Sihora"),
     });
 }
